@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//IDK THIS SO WE COME BACK LATER
+                tvDisplay.setText("");
             }
         });
 
