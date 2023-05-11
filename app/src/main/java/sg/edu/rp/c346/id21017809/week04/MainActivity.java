@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     TimePicker tp;
     Button btnDisplayDate;
     Button btnDisplayTime;
+    Button btnReset;
     TextView tvDisplay;
 
     @SuppressLint("MissingInflatedId")
@@ -31,17 +32,50 @@ public class MainActivity extends AppCompatActivity {
         tp = findViewById(R.id.timePicker);
         btnDisplayDate = findViewById(R.id.btnDisplayDate);
         btnDisplayTime = findViewById(R.id.btnDisplayTime);
+        btnReset = findViewById(R.id.btnReset);
         tvDisplay = findViewById(R.id.textViewDisplay);
 
         btnDisplayTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                tp.setIs24HourView(true);
                 int h = tp.getHour();
                 int m = tp.getMinute();
                 tvDisplay.setText("Time is " + h + ":" + m);
+            }
+        });
+
+        btnDisplayDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int d = dp.getDayOfMonth();
+                int m = dp.getMonth();
+                int y = dp.getYear();
+                if (d < 10) {
+                    tvDisplay.setText("Date is 0" + d + "/" + (m+1) + "/" + y);
+                }
+                else if (m < 10) {
+                    tvDisplay.setText("Date is " + d + "/0" + (m+1) + "/" + y);
+                }
+                else if (d < 10 && m < 10) {
+                    tvDisplay.setText("Date is 0" + d + "/0" + (m+1) + "/" + y);
+                }
+                else {
+                    tvDisplay.setText("Date is " + d + "/" + (m+1) + "/" + y);
+                }
+
 
             }
         });
+
+        btnReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//IDK THIS SO WE COME BACK LATER
+            }
+        });
+
+
 
     }
 }
